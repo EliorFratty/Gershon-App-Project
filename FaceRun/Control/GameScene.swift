@@ -34,7 +34,7 @@ class GameScene: SKScene {
     
     func movePlayer (state:PlayerState) {
         if let player = playerNode {
-            player.texture = SKTexture(imageNamed: state.rawValue)
+            player.texture = SKTexture(imageNamed: player.getImoji(state: state))
             
             var direction:CGFloat = 0
             
@@ -64,12 +64,9 @@ class GameScene: SKScene {
                 
                 player.run(moveSequence)
                 
-                
             }
-            
         }
     }
-    
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered

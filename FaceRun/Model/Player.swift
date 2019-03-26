@@ -16,5 +16,18 @@ enum PlayerState:String {
 
 class Player: SKSpriteNode {
 
+    var neutralImoji = "Neutral"
+    var upImoji = "Up"
+    var downImoji = "Down"
     
+    func getImoji(state: PlayerState) -> String{
+        switch state.rawValue {
+        case "Neutral": return neutralImoji
+        case "Up": return upImoji
+        case "Down": return downImoji
+            
+        default:
+            return ""
+        }
+    }
 }

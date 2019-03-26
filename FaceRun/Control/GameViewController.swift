@@ -84,7 +84,7 @@ class GameViewController: UIViewController, ARSessionDelegate {
         
         if browInnerUp > 0.5 {
             gameScene.updatePlayer(state: .up)
-        }else if browInnerUp < 0.1 {
+        }else if browInnerUp < 0.2 {
             gameScene.updatePlayer(state: .down)
         }else {
             gameScene.updatePlayer(state: .neutral)
