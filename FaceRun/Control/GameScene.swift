@@ -9,31 +9,37 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: SKScene{
     
-    private var playerNode:Player?
+    var playerNode:Player?
     var moving:Bool = false
+    var them: [String]?
     
     var generator:UIImpactFeedbackGenerator!
     
     override func didMove(to view: SKView) {
         playerNode = self.childNode(withName: "player") as? Player
+        
+        if let player = playerNode, let  them = them{
+            player.upImoji = them[0]
+            player.downImoji = them[1]
+            player.neutralImoji = them[2]
+        }
        
         generator = UIImpactFeedbackGenerator(style: .light)
         generator.prepare()
         
     }
     
-    
     func updatePlayer (state:PlayerState) {
         if !moving {
             movePlayer(state: state)
         }
-
     }
     
     func movePlayer (state:PlayerState) {
         if let player = playerNode {
+            print(player.downImoji)
             player.texture = SKTexture(imageNamed: player.getImoji(state: state))
             
             var direction:CGFloat = 0
@@ -73,3 +79,4 @@ class GameScene: SKScene {
        
     }
 }
+

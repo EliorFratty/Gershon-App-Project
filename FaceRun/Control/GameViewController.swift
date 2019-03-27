@@ -14,7 +14,8 @@ class GameViewController: UIViewController, ARSessionDelegate {
 
     var gameScene:GameScene!
     var session:ARSession!
-    
+    static var logedIn = true
+    var playerImojis = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,17 @@ class GameViewController: UIViewController, ARSessionDelegate {
                 gameScene = scene
                 // Set the scale mode to scale to fit the window
                 gameScene.scaleMode = .aspectFill
+
+                
+                //need to load data from DB!!
+                
+//                DBService.shared.Ref.observe(.value) { (snapshot) in
+//                    guard let snapDic = snapshot.value as? [String: [String : String]] else {return}
+//                }
+                if !playerImojis.isEmpty {
+                    gameScene.them = playerImojis
+                }
+
             
                 // Present the scene
                 view.presentScene(gameScene)
@@ -46,7 +58,7 @@ class GameViewController: UIViewController, ARSessionDelegate {
         guard ARFaceTrackingConfiguration.isSupported else {print("iPhone X required"); return}
         
         let configuration = ARFaceTrackingConfiguration()
-        
+
         session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
         
     }
@@ -77,18 +89,23 @@ class GameViewController: UIViewController, ARSessionDelegate {
     
     
     func update(withFaceAnchor faceAnchor: ARFaceAnchor) {
-        var bledShapes:[ARFaceAnchor.BlendShapeLocation:Any] = faceAnchor.blendShapes
         
-        guard let browInnerUp = bledShapes[.browInnerUp] as? Float else {return}
-        print(browInnerUp)
-        
-        if browInnerUp > 0.5 {
-            gameScene.updatePlayer(state: .up)
-        }else if browInnerUp < 0.2 {
-            gameScene.updatePlayer(state: .down)
-        }else {
-            gameScene.updatePlayer(state: .neutral)
+        if GameViewController.logedIn {
+            var bledShapes:[ARFaceAnchor.BlendShapeLocation:Any] = faceAnchor.blendShapes
+            
+            guard let browInnerUp = bledShapes[.browInnerUp] as? Float else {return}
+            //print(browInnerUp)
+            
+            if browInnerUp > 0.5 {
+                gameScene.updatePlayer(state: .up)
+            }else if browInnerUp < 0.12 {
+                gameScene.updatePlayer(state: .down)
+            }else {
+                gameScene.updatePlayer(state: .neutral)
+            }
+        } else {
+            let viewCntroller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "chooseImoji")
+            present(viewCntroller, animated: true, completion: nil)
         }
-        
     }
 }
