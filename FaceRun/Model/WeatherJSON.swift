@@ -1,6 +1,6 @@
 //
-//  Weather.swift
-//  Soccer
+//  WeatherJSON.swift
+//  FaceRun
 //
 //  Created by User on 24/03/2019.
 //  Copyright © 2019 User. All rights reserved.

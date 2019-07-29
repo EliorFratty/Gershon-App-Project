@@ -84,15 +84,6 @@ class TodoListViewController: SwipeTableViewController {
                 cell.textLabel?.textColor = ContrastColorOf(colour, returnFlat: true)
             }
             
-            //            print("version 1: \(CGFloat(indexPath.row / todoItems!.count))")
-            //
-            //            print("version 2: \(CGFloat(indexPath.row) / CGFloat(todoItems!.count))")
-            
-            
-            
-            //Ternary operator ==>
-            // value = condition ? valueIfTrue : valueIfFalse
-            
             cell.accessoryType = item.done ? .checkmark : .none
         } else {
             cell.textLabel?.text = "No Items Added"
@@ -163,7 +154,6 @@ class TodoListViewController: SwipeTableViewController {
     }
     
     //MARK - Model Manupulation Methods
-    
     
     
     func loadItems() {

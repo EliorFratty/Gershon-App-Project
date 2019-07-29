@@ -1,9 +1,9 @@
 //
 //  Category.swift
-//  Todoey
+//  FaceRun
 //
-//  Created by Angela Yu on 12/12/2017.
-//  Copyright © 2017 Angela Yu. All rights reserved.
+//  Created by User on 24/03/2019.
+//  Copyright © 2019 User. All rights reserved.
 //
 
 import Foundation

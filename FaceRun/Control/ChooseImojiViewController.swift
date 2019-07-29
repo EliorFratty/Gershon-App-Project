@@ -3,7 +3,7 @@
 //  FaceRun
 //
 //  Created by User on 26/03/2019.
-//  Copyright © 2019 Brian Advent. All rights reserved.
+//  Copyright © 2019 User. All rights reserved.
 //
 
 import UIKit

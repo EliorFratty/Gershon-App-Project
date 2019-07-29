@@ -2,8 +2,8 @@
 //  GameViewController.swift
 //  FaceRun
 //
-//  Created by Brian Advent on 21.06.18.
-//  Copyright © 2018 Brian Advent. All rights reserved.
+//  Created by User on 24/03/2019.
+//  Copyright © 2019 User. All rights reserved.
 //
 
 import UIKit
@@ -27,12 +27,6 @@ class GameViewController: UIViewController, ARSessionDelegate {
                 // Set the scale mode to scale to fit the window
                 gameScene.scaleMode = .aspectFill
 
-                
-                //need to load data from DB!!
-                
-//                DBService.shared.Ref.observe(.value) { (snapshot) in
-//                    guard let snapDic = snapshot.value as? [String: [String : String]] else {return}
-//                }
                 if !playerImojis.isEmpty {
                     gameScene.them = playerImojis
                 }

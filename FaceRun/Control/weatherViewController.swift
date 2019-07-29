@@ -1,8 +1,8 @@
 //
 //  weatherViewController.swift
-//  Soccer
+//  FaceRun
 //
-//  Created by User on 24/03/2019.
+//  Created by User on 29/03/2019.
 //  Copyright © 2019 User. All rights reserved.
 //
 
@@ -56,7 +56,7 @@ class weatherViewController: UIViewController, CLLocationManagerDelegate {
                       if let weatherData = results {
                         if let weatherInfo = weatherData.first {
                             self.summeryLabel.text = weatherInfo.summary
-                            self.temperatureLabel.text = "\(Int(weatherInfo.temperature)) F"
+                            self.temperatureLabel.text = "\(Int((weatherInfo.temperature - 32) * 5/9)) C"
                             self.weatherImage.image = UIImage(named: weatherInfo.icon)
                         }
                     }
@@ -69,11 +69,7 @@ class weatherViewController: UIViewController, CLLocationManagerDelegate {
         cityLabel.text = "Location Unavailable"
     }
     
-    
-    
-    
-    
-    
+
 
     /*
     // MARK: - Navigation
